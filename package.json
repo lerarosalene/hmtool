@@ -1,0 +1,27 @@
+{
+  "name": "hmtool",
+  "version": "1.0.0",
+  "description": "Simple console mod manager for SSE",
+  "scripts": {
+    "build": "esbuild build.ts --bundle --outfile=build/build.js --packages=external && node build/build.js",
+    "typecheck": "tsc",
+    "clean": "rimraf build dist bin"
+  },
+  "keywords": [
+    "skyrim se",
+    "mod manager"
+  ],
+  "author": "Larissa Rosalene <lerarosalene@outlook.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.5.7",
+    "esbuild": "^0.19.2",
+    "glob": "^10.3.3",
+    "postject": "^1.0.0-alpha.6",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2",
+    "yaml": "^2.3.2",
+    "zod": "^3.22.2"
+  }
+}

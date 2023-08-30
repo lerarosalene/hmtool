@@ -1,0 +1,4 @@
+{
+  "main": "dist/hmtool.js",
+  "output": "build/hmtool.blob"
+}
