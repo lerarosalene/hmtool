@@ -45,7 +45,7 @@ This command will add virtual installation directory to `HKEY_LOCAL_MACHINE\SOFT
 hmtool nemesis-snapshot [mods.yaml location]
 ```
 
-This command backups all `.txt`, `.pex` and `.hkx` files from virtual installation directory to `C:\Users\<username>\AppData\Local\hmtool\nemesis-snapshot`. It is presumed that Nemesis writes this files only during it's operation. I've still got no response from the author of Nemesis, if this assumption is incorrect, then it is incorrect 🤷‍♀️.
+This command backups all `.txt`, `.pex` and `.hkx` files from virtual installation directory to `C:\Users\<username>\AppData\Local\hmtool\nemesis-snapshot`. It is presumed that Nemesis writes this files only during its operation. I've still got no response from the author of Nemesis, if this assumption is incorrect, then it is incorrect 🤷‍♀️.
 
 ```
 hmtool nemesis-patch [mods.yaml location]
