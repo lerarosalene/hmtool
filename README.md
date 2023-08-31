@@ -25,23 +25,31 @@ Note: you can omit path to `mods.yaml` if it is named `mods.yaml` and is located
 
 ### Deploying
 
-`hmtool deploy [mods.yaml location]`
+```
+hmtool deploy [mods.yaml location]
+```
 
 This command will create new folder `config.output` and create hardlinks of base game files and all mod files there. If such folder exists, it is purged completely and recreated from scratch each time this command is run. This is more akin to what MO2 does with its USVFS, than to hardlink deployment strategy of Vortex, because main goal is to keep base game installation untouched.
 
 ### Patching registry
 
-`hmtool registry [mods.yaml location]`
+```
+hmtool registry [mods.yaml location]
+```
 
 This command will add virtual installation directory to `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition` key, `installed path` parameter. This is very important for tools like SSEEdit, DynDOLOD or TexGen to be able to see your modded installation. If you don't use such tools, you can omit this step.
 
 ### Isolating nemesis changes
 
-`hmtool nemesis-snapshot [mods.yaml location]`
+```
+hmtool nemesis-snapshot [mods.yaml location]
+```
 
 This command backups all `.txt`, `.pex` and `.hkx` files from virtual installation directory to `C:\Users\<username>\AppData\Local\hmtool\nemesis-snapshot`. It is presumed that Nemesis writes this files only during it's operation. I've still got no response from the author of Nemesis, if this assumption is incorrect, then it is incorrect 🤷‍♀️.
 
-`hmtool nemesis-patch [mods.yaml location]`.
+```
+hmtool nemesis-patch [mods.yaml location]
+```
 
 This command walks over all `.txt`, `.pex` and `.hkx` files at virtual installation directory and compares them to backup files created previously. All detected changes are then copied to `config.sse.nemesis_patch` directory, which should be added to `config.mods` to be deployed on next run. This **includes** Nemesis own files overwritten by engine update or normal operation, **including** its logs, but limited to `.txt`, `.pex` and `.hkx` files.
 
