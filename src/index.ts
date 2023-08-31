@@ -1,10 +1,13 @@
 import { deploy } from "./deploy";
+import { nemesisPatch, nemesisSnapshot } from "./nemesis-tools";
 import { registry } from "./registry";
 
 type Tool = (args: string[]) => Promise<void>;
 const tools: Partial<Record<string, Tool>> = {
   deploy: deploy,
   registry: registry,
+  "nemesis-snapshot": nemesisSnapshot,
+  "nemesis-patch": nemesisPatch,
 };
 
 async function main() {
