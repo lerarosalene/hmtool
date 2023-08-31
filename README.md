@@ -21,6 +21,8 @@ mods:
 
 ## How to use
 
+Note: you can omit path to `mods.yaml` if it is named `mods.yaml` and is located in working directory where tool is executed.
+
 ### Deploying
 
 `hmtool deploy [mods.yaml location]`
@@ -46,3 +48,11 @@ This command walks over all `.txt`, `.pex` and `.hkx` files at virtual installat
 All files for which changes are detected are then either purged if they are new, or overwritten **at their original location** (in your mod collection folder and consequently at virtuall installation directory) since Nemesis does the same to them.
 
 <p style="background-color: red; border-radius: 4px; padding: 4px; color: white;">It is vital to run commands in strict order: <code>nemesis-snapshot</code>, then Nemesis itself, then <code>nemesis-patch</code>, then <code>deploy</code> with generated patch folder added to mods list in config. If done incorrectly, it can corrupt your mods! (For example, <code>nemesis-snapshot</code> after Nemesis was run will assume that changed files are original).</p>
+
+## How to build
+
+1. Install NodeJS 20 or later. Previous versions don't support creating single executable out of script.
+2. Clone this repository
+3. Install dependencies with `npm install` command
+4. Run `npm run build`
+5. Grab `hmtool.exe` and `hmtool.js` from `dist/` folder.
