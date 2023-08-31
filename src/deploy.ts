@@ -50,9 +50,15 @@ async function installFolders(modsDirectory: string, config: Config) {
     await rimraf(config.output);
   } catch (error) {}
 
-  console.log(`[0/${config.mods.length}] Previous installation cleaned up`);
-  for (let i = 0; i < config.mods.length; ++i) {
-    const mod = config.mods[i];
+  const realMods: typeof config["mods"] = [];
+  if (config.base) {
+    realMods.push({ path: config.base, prefix: "." });
+  }
+  config.mods.forEach(mod => realMods.push(mod));
+
+  console.log(`[0/${realMods.length}] Previous installation cleaned up`);
+  for (let i = 0; i < realMods.length; ++i) {
+    const mod = realMods[i];
     const realInstallPath = path.resolve(
       modsDirectory,
       config.output,
@@ -62,7 +68,7 @@ async function installFolders(modsDirectory: string, config: Config) {
       path.resolve(modsDirectory, mod.path),
       realInstallPath,
     );
-    console.log(`[${i + 1}/${config.mods.length}] Installed ${mod.path}`);
+    console.log(`[${i + 1}/${realMods.length}] Installed ${mod.path}`);
   }
 }
 
