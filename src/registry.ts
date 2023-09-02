@@ -14,6 +14,7 @@ export async function registry(args: string[]) {
 
   const keyName =
     "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Bethesda Softworks\\Skyrim Special Edition";
+  const keyName2 = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Bethesda Softworks\\Skyrim Special Edition";
   const valueName = "installed path";
 
   const ostmp = os.tmpdir();
@@ -28,6 +29,9 @@ export async function registry(args: string[]) {
       "Windows Registry Editor Version 5.00",
       "",
       `[${keyName}]`,
+      `"${valueName}"="${path.resolve(configDirectory, config.output).replace(/\\/g, "\\\\")}"`,
+      "",
+      `[${keyName2}]`,
       `"${valueName}"="${path.resolve(configDirectory, config.output).replace(/\\/g, "\\\\")}"`,
       "",
     ].join("\n");
