@@ -89,10 +89,16 @@ export async function deploy(args: string[]) {
       "Skyrim Special Edition",
       "Plugins.txt",
     );
-    await fsp.copyFile(
-      path.resolve(configDirectory, config.sse.plugins),
-      installLocation,
-    );
+
+    const plugins = (await fsp.readFile(path.resolve(configDirectory, config.sse.plugins), 'utf-8'))
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .filter(line => !line.startsWith('#'))
+      .join('\n');
+
+    await fsp.writeFile(installLocation, plugins);
+  
     console.log(
       `Installed plugins file: ${config.sse.plugins} -> ${installLocation}`,
     );
