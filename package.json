@@ -1,6 +1,6 @@
 {
   "name": "hmtool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple console mod manager for SSE",
   "scripts": {
     "build": "esbuild build.ts --bundle --outfile=build/build.js --packages=external && node build/build.js",
